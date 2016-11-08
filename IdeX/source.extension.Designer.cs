@@ -97,7 +97,7 @@ namespace IdeX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IdeX allows your application to easily exchange data with Visual Studio..
+        ///   Looks up a localized string similar to IdeX allows your application to easily get data from Visual Studio..
         /// </summary>
         internal static string _112 {
             get {
