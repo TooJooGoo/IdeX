@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="8F047980-8107-4E48-B836-571A2AAAFA3C" Version="1.0" Language="en-US" Publisher="TJG" />
+    <DisplayName>IdeX</DisplayName>
+    <Description xml:space="preserve">IdeX allows your application to easily get data from Visual Studio. For example get the current selected text or the current selected items from the solution explorer programmatically.IdeX allows your application to easily get data from Visual Studio. For example get the current selected text or the current selected items from the solution explorer programmatically.</Description>
+    <MoreInfo>https://github.com/TooJooGoo/IdeX</MoreInfo>
+    <License>Resources\LICENSE</License>
+    <GettingStartedGuide>https://github.com/TooJooGoo/IdeX/blob/master/README.md</GettingStartedGuide>
+    <ReleaseNotes>https://github.com/TooJooGoo/IdeX/blob/master/CHANGELOG.md</ReleaseNotes>
+    <Icon>Resources\idex.ico</Icon>
+    <PreviewImage>Resources\idex_175.png</PreviewImage>
+    <Tags>get selected text, get selected item, get open documents, scintilla, ahk, idex, teamservices</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" d:Source="Installed" Version="[14.0]" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+  </Assets>
+</PackageManifest>

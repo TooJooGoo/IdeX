@@ -1,0 +1,6 @@
+
+Package resx file
+-----------------
+	There must be at least one resx file with node
+	"MergeWithCTO" defined in the csproj. Otherwise the build fails with
+	"No resource file set the resource merger.".
