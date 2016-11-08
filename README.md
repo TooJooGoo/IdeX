@@ -13,10 +13,9 @@ IdeX is an acronym for Integrated Development Environment Extension. It uses IPC
 The IdeX server integrates into Visual Studio and the IdeX client integrates into the external process. The external process sends a request to the server. Based on the request, the server collects data and sends a response back to the client. The request is a simple string which adheres to the IdeX Syntax.
 
 ## Download
-[![Build](https://ci.appveyor.com/api/projects/status/wtkmayffiypnnctr?svg=true)](https://ci.appveyor.com/project/TooJooGoo/idex-1xgk2)
+[![Build status](https://ci.appveyor.com/api/projects/status/4m76qv4u4t6pc1yg?svg=true)](https://ci.appveyor.com/project/TooJooGoo/idex)
 
-- Download the tool from AppVeyor: [Download](http://vsixgallery.com/extension/6df08657-6335-4acb-a00e-2f9cce7406f0).
- - Download the tool from the Visual Studio Gallery.
+Get IdeX here: [Download IdeX](http://vsixgallery.com/extension/8F047980-8107-4E48-B836-571A2AAAFA3C)
 
 ## Getting Started
 This chapter explains how easy it is to setup IdeX and how you can include its features in your own application.
@@ -64,17 +63,17 @@ The response window should yield a text similar to this:
 	Type = Solution
 	Kind = Solution
 	Name = My Solution
-	Path = E:\Tobias\Vs\CopyData\My Solution.sln
+	Path = E:\Vs\CopyData\My Solution.sln
 	1
 	Type = Project
 	Kind = CSharp
 	Name = My Project
-	Path = E:\Tobias\Vs\CopyData\CopyData\
+	Path = E:\Vs\CopyData\CopyData\
 	2
 	Type = ProjectItem
 	Kind = PhysicalFile
 	Name = Program.cs
-	Path = E:\Tobias\Vs\CopyData\CopyData\Program.cs
+	Path = E:\Vs\CopyData\CopyData\Program.cs
 
 We just asked Visual Studio what kind of items are selected in the solution explorer.
 
