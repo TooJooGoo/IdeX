@@ -4,8 +4,8 @@ IdeX allows your application to easily get data from Visual Studio. For example 
 
 - Your application can be written in almost any language.
 - IdeX is compact, robust and extremely fast. See chapter "Technical background".
-- IdeX is easy to use. The Getting Started chapter explains how  to integrate IdeX into your own application.
-- The IdeX User Interface integrates seamlessly into Visual Studio.
+- IdeX is easy to use. The "Getting Started" chapter explains how to integrate IdeX into your own application.
+- The IdeX user interface integrates seamlessly into Visual Studio.
 - The performance of Visual Studio itself is not impacted.
 
 ## Technical background
