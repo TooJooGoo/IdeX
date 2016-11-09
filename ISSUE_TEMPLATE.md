@@ -1,16 +1,13 @@
-#### IdeX Issue
 
-##### ReportTitle
-Conains a very brief report title.
-##### Environment
+#### Environment
 Includes the involved software and version.
-##### Steps
+#### Steps
 Includes the steps that lead to the bug.
-##### Issue
+#### Current Behavior
 Describes what the software does wrong at this point.
-##### Expectation
+#### Expected Behavior
 Describes what the author expects the software to do at this point.
-##### Attachments
-Includes additional data or information to reproduce the bug.
-##### Hints
-Any info, insights or even suspicions the author thinks might help to solve the bug.
+#### Attachments
+Includes additional data or data references to reproduce the bug.
+#### Hints
+Includes any information, insights or even suspicions the author thinks might help to solve the bug.
