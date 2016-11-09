@@ -1,10 +1,13 @@
 ### Road map
 These features are planned for the next version.
 
-- [ ] Editor.OpenDocumentCount : Gets the count of documents currently opened in the editor window.
+- [ ] Provide a "Getting Started" point.
 
 ### Change log
 These features have been released with each version on the Visual Studio extension gallery.
+
+#### IdeX 1.1
+- [x] Editor.OpenDocumentCount : Gets the count of documents currently opened in the editor window.
 
 #### IdeX 1.0
 - [x] ActiveDocument.Selection.Text : Gets the current selected text of the active document.

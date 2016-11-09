@@ -200,6 +200,13 @@ public static class Ide
             return result;
         }
         else if (XString.Eq(right
+            , "doccount"
+            , "Editor.OpenDocumentCount"))
+        {
+            var result = OpenDocumentCount_Get();
+            return result;
+        }
+        else if (XString.Eq(right
             , "Server.Id"
             ))
         {
@@ -305,6 +312,15 @@ public static class Ide
         }
         return "";
     }
+
+    private static string OpenDocumentCount_Get()
+    {
+        var documents = Dte.Documents;
+        var docs = documents.OfType<Document>();
+        var count = docs.Count().ToString();
+        return count;
+    }
+
     public static string TrySetOp(string left, string right)
     {
         try
