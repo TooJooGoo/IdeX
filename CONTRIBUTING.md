@@ -15,7 +15,7 @@ Before reporting a bug, please
 - check if the bug is caused by the code in this repository.
 
 When writing a bug report, please
-- use the git issue tracker
+- use the git issue tracker.
 - keep the report as compact and completive as possible.
 - adhere to the given bug report template.
 
@@ -70,7 +70,7 @@ Before writing a feature request, please
 - check if your feature is already on the road map.
 
 When writing a feature request, please
-- use the git issue tracker
+- use the git issue tracker.
 - outline the benefits of the requested feature.
 - tell how you would support us to realize the feature .
 
@@ -79,22 +79,22 @@ When writing a feature request, please
 - Always use the Visual Studio default code indentation. Use "Control+K+D" to format a document before checking in.
 - Please eliminate all warnings before checking in.
 - Do not use prefixes on variables such as "m_Name", "s_Name", "_Name". Just use "Name" instead.
-- Use camel casing on variables. For example avoid names like "Servermanager" or "server_manager". Instead use "ServerManager".
+- Use camel case on variables. For example avoid names like "Servermanager" or "server_manager". Instead use "ServerManager".
 
 ### Pull requests
 Before requesting for pull, please 
  - ask us first.
  - tell us your aim. For example do you want to deliver a patch, an improvement, a refactoring or a porting to another language.
- - use the git issue tracker
+ - use the git issue tracker.
 
 When your aim is cleared and agreed, please
- - adhere to the [code guidelines](#code-guidelines)
+ - adhere to the [code guidelines](#code-guidelines).
  - adhere to the pull request recommendation.
 
 ### Pull request recommendation
 To get your work included in the project, please adhere to this recommendation.
 
-1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork, and configure the remotes:
+1. [Fork](https://help.github.com/articles/fork-a-repo/) the project, clone your fork, and configure the remotes:
 
    ```bash
    # Clone your fork of the repo into the current directory
@@ -102,7 +102,7 @@ To get your work included in the project, please adhere to this recommendation.
    # Navigate to the newly cloned directory
    cd <folder-name>
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/madskristensen/<this-repro-name>.git
+   git remote add upstream https://github.com/TooJooGoo/<this-repro-name>.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -118,9 +118,10 @@ To get your work included in the project, please adhere to this recommendation.
    git checkout -b <topic-branch-name>
    ```
 
-4. Commit your changes in logical chunks. Please adhere to the [git commit
-   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). Use Git's
-   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+4. Commit your changes in logical chunks.
+   Please adhere to the [git commit
+   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). 
+   Use Git's [interactive rebase](https://help.github.com/articles/about-git-rebase/)
    feature to tidy up your commits. Prepend the name of the feature to the commit message.
 
 5. Locally merge or rebase the upstream development branch into your topic branch:
@@ -135,5 +136,4 @@ To get your work included in the project, please adhere to this recommendation.
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the master branch.
+7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/) with title and description against the master branch.

@@ -95,7 +95,7 @@ string request = "g SolutionExplorer.Selection.Items";
 string response = IdexPipe.Send(request);
 ```
 
-Learn more about the IdeX here: [IdeX syntax](IdexSyntax.txt)
+Learn more about IdeX here: [IdeX syntax](IdexSyntax.txt)
 
 ## Features
 The most popular features are:
