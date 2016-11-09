@@ -21,41 +21,49 @@ When writing a bug report, please
 
 ### Bug report template
 
-A bug report should contain a report Tile, the author's environment, the reproduction steps, the current Behavior, the author's expected Behavior and optionally attachments and hints. Please use this bug template:
+A bug report should contain a report title, the author's environment, the reproduction steps, the current behavior, the author's expected behavior and optionally attachments and hints. Please use this template:
 
 	Report Title
-	  Conains a very brief report title.
+	  Conains a short report title.
 	Environment
 	  Includes the involved software and version.
 	Steps
 	  Includes the steps that lead to the bug.
 	Current Behavior
-	  Describes what the software does wrong at this point.
+	  Describes what the software does wrong at 
+	  this point.
 	Expected Behavior
-	  Describes what the author expects the software to do at this point.
+	  Describes what the author expects the software 
+	  to do at this point.
 	Attachments
-	  Includes additional data or data references to reproduce the bug.
+	  Includes additional data or data references 
+	  to reproduce the bug.
 	Hints
-	  Any information, insights or even suspicions the author thinks might help to solve the bug.
+	  Any information, insights or even suspicions 
+	  the author thinks might help to solve the bug.
 
-A real bug report could look like this:
+Attachments and hints are optional. Sometimes the expected behavior is self-explanatory, but most readers prefer some kind of statement here.
 
-	Report Tile
-	  Failed to start server
+An exemplary bug report could look like this:
+
+	Report Title
+	  Failed to start the server
 	Environment
-	  Microsoft Visual Studio Community 2015
-	  Version 14.0.25431.01 Update 3
+	  - Visual Studio Community 2015 Version 14.0
+	  - IdeX Version 1.1
 	Steps
-      1. Goto "Tools/IdeX/Options"
-      2. Click button "Enable"
+      1. Goto "Tools/IdeX/Options".
+      2. Click button "Enable".
 	Current Behavior
-	  A window "Enable failed" turns up which shows the call stack.
+	  A window "Enable failed" turns up which shows 
+	  the call stack.
 	Expected Behavior
-	  No window. Instad the server should be enabled.
+	  The server should be enabled.
 	Attachments
 	  File "callstack.txt".
 	Hints
-	  The issue does not occur if textbox "Marker" is focused before.
+	  The problem does not occur if textbox "Marker" is
+	  focused before.
 
 ### Feature requests
 Before writing a feature request, please

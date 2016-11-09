@@ -79,17 +79,15 @@ The response window should yield a text similar to this:
 
 We just asked Visual Studio what kind of items are selected in the solution explorer.
 
-To emit a request from your application, just include the [IdexPipe](IdexPipe.md) class in your project.
+To use IdeX within your project, just include 
+the [IdexPipe](IdexPipe.md) class.
 
-In your application (in this example C#) you can emit the request programmatically:
+Use the IdexPipe class to send a request programmatically:
 ```csharp
-// Set the encoding to use for the request and the response.
+// Tell which encoding you want to use.
 IdexPipe.Encoding = IdexPipe.Unicode;
-// Build the request string. The request begins with a ClientId, 
-// which should be set to the title of your application's 
-// main window. Followed by a newline and the "get" code.
-string request = "ClientId = MyClient\r\n"
-+ "g SolutionExplorer.Selection.Items";
+// Build the request string.
+string request = "g SolutionExplorer.Selection.Items";
 // Send the request.
 // The Send method is executed synchronously.
 // The response string holds the selected items 
@@ -97,7 +95,7 @@ string request = "ClientId = MyClient\r\n"
 string response = IdexPipe.Send(request);
 ```
 
-Learn more about the IdeX syntax in [IdeX syntax](IdexSyntax.txt).
+Learn more about the IdeX here: [IdeX syntax](IdexSyntax.txt)
 
 ## Features
 The most popular features are:
