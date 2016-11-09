@@ -1,13 +1,10 @@
 ### Road map
-Following features[^1] are one the road map:
-[^1]: Features that have a checkmark are complete and available for download. 
+These features are planned for the next version.
 
 - [ ] Editor.OpenDocumentCount : Gets the count of documents currently opened in the editor window.
 
 ### Change log
-These are the changes to each version that has been released
-on the official Visual Studio extension gallery.
-
+These features have been released with each version on the Visual Studio extension gallery.
 
 #### IdeX 1.0
 - [x] ActiveDocument.Selection.Text : Gets the current selected text of the active document.
