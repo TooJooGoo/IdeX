@@ -80,7 +80,7 @@ Before requesting for pull, please
  - use the git issue tracker
 
 When your aim is cleared and agreed, please
- - adhere to the [coding guidelines](#code-guidelines) 
+ - adhere to the [code guidelines](#code-guidelines)
  - adhere to the pull request recommendation.
 
 ### Pull request recommendation

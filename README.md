@@ -15,7 +15,9 @@ The IdeX server integrates into Visual Studio and the IdeX client integrates int
 ## Download
 [![Build status](https://ci.appveyor.com/api/projects/status/4m76qv4u4t6pc1yg?svg=true)](https://ci.appveyor.com/project/TooJooGoo/idex)
 
-Get IdeX here: [Download IdeX](http://vsixgallery.com/extension/8F047980-8107-4E48-B836-571A2AAAFA3C)
+Get the latest IdeX version here:
+ - Vsix gallery: [Download](http://vsixgallery.com/extension/8F047980-8107-4E48-B836-571A2AAAFA3C)
+ - Visual Studio gallery: [Download](https://visualstudiogallery.msdn.microsoft.com/a53074bd-cf8d-4be7-8eb6-2b768a45b96b)
 
 ## Getting Started
 This chapter explains how easy it is to setup IdeX and how you can include its features in your own application.
