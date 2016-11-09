@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="8F047980-8107-4E48-B836-571A2AAAFA3C" Version="1.0" Language="en-US" Publisher="TJG" />
+    <Identity Id="8F047980-8107-4E48-B836-571A2AAAFA3C" Version="1.1" Language="en-US" Publisher="TJG" />
     <DisplayName>IdeX</DisplayName>
     <Description xml:space="preserve">IdeX allows your application to easily get data from Visual Studio. For example get the current selected text or the current selected items from the solution explorer programmatically.</Description>
     <MoreInfo>https://github.com/TooJooGoo/IdeX</MoreInfo>
