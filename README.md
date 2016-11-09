@@ -20,7 +20,7 @@ Get the latest IdeX version here:
  - Visual Studio gallery: [Download](https://visualstudiogallery.msdn.microsoft.com/a53074bd-cf8d-4be7-8eb6-2b768a45b96b)
 
 ## Getting Started
-This chapter explains how easy it is to setup IdeX and how you can include its features in your own application.
+This chapter explains how easy it is to setup IdeX and how you can plug it into your application.
 
 ### Start the server
 In Visual Studio click menu item "Tools/IdeX/Enable".
@@ -33,7 +33,7 @@ The IdeX laboratory is started.
 ![Idex laboratory](Art/IdexLab.png "The IdeX laboratory")
 
 The IdeX Lab is a standalone process simulating an IdeX client. The IdeX Lab is an environment for testing new requests against the IdeX server.
-When you are done with a request, you can copy it to your own app.
+When you are done with a request, you can copy it to your application.
 
 ### Sample Usage
 The following sample shows how to write a request which gets all items currently selected in the solution explorer.
@@ -79,34 +79,40 @@ The response window should yield a text similar to this:
 
 We just asked Visual Studio what kind of items are selected in the solution explorer.
 
-To emit a request from your own application, just include the [IdexPipe](IdexPipe.md) class in your project.
+To emit a request from your application, just include the [IdexPipe](IdexPipe.md) class in your project.
 
 In your application (in this example C#) you can emit the request programmatically:
-
 ```csharp
+// Set the encoding to use for the request and the response.
 IdexPipe.Encoding = IdexPipe.Unicode;
-var request = "g SolutionExplorer.Selection.Items";
-var response = IdexPipe.Send(request);
+// Build the request string. The request begins with a ClientId, 
+// which should be set to the title of your application's 
+// main window. Followed by a newline and the "get" code.
+string request = "ClientId = MyClient\r\n"
++ "g SolutionExplorer.Selection.Items";
+// Send the request.
+// The Send method is executed synchronously.
+// The response string holds the selected items 
+// as shown above.
+string response = IdexPipe.Send(request);
 ```
-
-You only need to put the request string into the Send method. The rest is done behind the scenes. The Send method is executed synchronously. The response string holds the selected items as shown above.
 
 Learn more about the IdeX syntax in [IdeX syntax](IdexSyntax.txt).
 
 ## Features
 The most popular features are:
 - Get selected items
-  - Gets the current selected items from the solution explorer.
+  - Gets the items currently selected in the solution explorer.
 - Get selected text
-  - Gets the current selected text from the active document.
+  - Gets the current selected text of the active document.
 - Get open documents
-  - Gets the current opened documents.
+  - Gets the documents currently opened in the editor window.
 
-## Changelog
+## Change log
 See the change log here: [Change log](CHANGELOG.md)
 
 ## Contribute
 See the contribution guidelines here: [Contribution guidelines](CONTRIBUTING.md)
 
 ## License
-Inspect the license file here: [License](LICENSE)
+See the license file here: [License](LICENSE)

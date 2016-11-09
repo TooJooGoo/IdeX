@@ -1,4 +1,4 @@
-## Contributing
+## Contribution guidelines
 These are the contribution guidelines of the IdeX project, separated into the following topics.
 - [Bug reports](#bug-reports)
 - [Feature requests](#feature-requests)
@@ -21,26 +21,26 @@ When writing a bug report, please
 
 ### Bug report template
 
-A bug report should contain a ReportTile, the author's Environment, the reproduction Steps, the observed Issue, the author's Expectation and optionally Attachments and Hints. Please use this bug template:
+A bug report should contain a report Tile, the author's environment, the reproduction steps, the current Behavior, the author's expected Behavior and optionally attachments and hints. Please use this bug template:
 
-	ReportTitle
+	Report Title
 	  Conains a very brief report title.
 	Environment
 	  Includes the involved software and version.
 	Steps
 	  Includes the steps that lead to the bug.
-	Issue
+	Current Behavior
 	  Describes what the software does wrong at this point.
-	Expectation
+	Expected Behavior
 	  Describes what the author expects the software to do at this point.
 	Attachments
-	  Includes additional data or information to reproduce the bug.
+	  Includes additional data or data references to reproduce the bug.
 	Hints
-	  Any info, insights or even suspicions the author thinks might help to solve the bug.
+	  Any information, insights or even suspicions the author thinks might help to solve the bug.
 
 A real bug report could look like this:
 
-	ReportTile
+	Report Tile
 	  Failed to start server
 	Environment
 	  Microsoft Visual Studio Community 2015
@@ -48,9 +48,9 @@ A real bug report could look like this:
 	Steps
       1. Goto "Tools/IdeX/Options"
       2. Click button "Enable"
-	Issue
-	  A window "Enable failed" pops up which shows the call stack.
-	Expection
+	Current Behavior
+	  A window "Enable failed" turns up which shows the call stack.
+	Expected Behavior
 	  No window. Instad the server should be enabled.
 	Attachments
 	  File "callstack.txt".
