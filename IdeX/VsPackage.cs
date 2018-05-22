@@ -1,5 +1,5 @@
 ﻿// ----------------------------------------------------
-// COPYRIGHT (C) <TJG> ALL RIGHTS RESERVED. SEE THE LIC
+// COPYRIGHT (C) <TooJooGoo> ALL RIGHTS RESERVED. SEE THE LIC
 // ENSE FILE FOR THE FULL LICENSE GOVERNING THIS CODE. 
 // ----------------------------------------------------
 
@@ -17,10 +17,10 @@ using System.Runtime.InteropServices;
 [ProvideOptionPage(typeof(GeneralPage), "IdeX", "General", 0, 0, true)]
 [ProvideOptionPage(typeof(ExpertPage), "IdeX", "Expert", 0, 0, true)]
 // Integrate a custom settings point into the "Import and Export settings" wizard.
-// The custom settings point data is stored in the vssettings file under TJG_IdeX.
+// The custom settings point data is stored in the vssettings file under TooJooGoo_IdeX.
 // See https://msdn.microsoft.com/en-us/library/bb166176.aspx
 [ProvideProfile(typeof(ExpertPage)
-    , "TJG"
+    , "TooJooGoo"
     , "IdeX"
     , 106
     , 107 // Is shown in "Import and Export settings" as node name.

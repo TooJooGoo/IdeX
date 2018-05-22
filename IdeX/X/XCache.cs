@@ -1,5 +1,5 @@
 // ----------------------------------------------------
-// COPYRIGHT (C) <TJG> ALL RIGHTS RESERVED. SEE THE LIC
+// COPYRIGHT (C) <TooJooGoo> ALL RIGHTS RESERVED. SEE THE LIC
 // ENSE FILE FOR THE FULL LICENSE GOVERNING THIS CODE. 
 // ----------------------------------------------------
 

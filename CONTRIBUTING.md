@@ -50,7 +50,7 @@ An exemplary bug report could look like this:
 	  Failed to start the server
 	Environment
 	  - Visual Studio Community 2015 Version 14.0
-	  - IdeX Version 1.1
+	  - IdeX Version 1.2
 	Steps
       1. Goto "Tools/IdeX/Options".
       2. Click button "Enable".

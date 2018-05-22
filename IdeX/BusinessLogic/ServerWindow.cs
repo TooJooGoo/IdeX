@@ -1,5 +1,5 @@
 ﻿// ----------------------------------------------------
-// COPYRIGHT (C) <TJG> ALL RIGHTS RESERVED. SEE THE LIC
+// COPYRIGHT (C) <TooJooGoo> ALL RIGHTS RESERVED. SEE THE LIC
 // ENSE FILE FOR THE FULL LICENSE GOVERNING THIS CODE. 
 // ----------------------------------------------------
 
@@ -73,22 +73,22 @@ public partial class ServerWindow : Form
         string requestServerId = "";
         string requestClientId = "";
         var requestLines = XString.SplitIntoLines(request);
-        var actionLines = new List<string>();
-        foreach(var requestLine in requestLines)
+
+        if(requestLines.Length >= 3)
         {
-            string left, right;
-            XString.ParseAssoc(requestLine, out left, out right);
-            if(XString.Eq(left,"ServerId") || XString.Eq(left, "sid"))
+            for(int i = 0; i < 3; i++)
             {
-                requestServerId = right;
-            }
-            else if (XString.Eq(left, "ClientId") || XString.Eq(left, "cid"))
-            {
-                requestClientId = right;
-            }
-            else if(XString.StartsWith(requestLine, "o ", "g ", "s "))
-            {
-                actionLines.Add(requestLine);
+                string requestLine = requestLines[i];
+                string left, right;
+                XString.ParseAssoc(requestLine, out left, out right);
+                if (XString.Eq(left, "ServerId") || XString.Eq(left, "sid"))
+                {
+                    requestServerId = right;
+                }
+                else if (XString.Eq(left, "ClientId") || XString.Eq(left, "cid"))
+                {
+                    requestClientId = right;
+                }
             }
         }
 
@@ -107,14 +107,13 @@ public partial class ServerWindow : Form
         XLog.Log($"ClientHandle: {clientHandle}");
 
         var response = "";
-
-        foreach (var actionLine in actionLines)
+        foreach (var actionLine in requestLines)
         {
-            if(actionLine.Length > 2)
+            if (XString.StartsWith(actionLine, "o ", "g ", "s "))
             {
                 var actionPrefix = actionLine.Substring(0, 2).Trim();
                 var actionBody = actionLine.Substring(2).Trim();
-                if(XString.Eq(actionPrefix,"o"))
+                if (XString.Eq(actionPrefix, "o"))
                 {
                     XLog.Log($"Execute action: {actionPrefix} {actionBody}");
                     response += actionBody;
@@ -137,6 +136,100 @@ public partial class ServerWindow : Form
                         XString.ParseAssoc(actionBody, out left, out right);
                         Ide.TrySetOp(left, right);
                     }
+                }
+            }
+            else if (XString.StartsWith(actionLine, "Document."))
+            {
+                string rest = actionLine.Substring(9);
+                int openBracket = rest.IndexOf('(');
+                string functionName = rest.Substring(0, openBracket);
+                rest = rest.Substring(openBracket + 1);
+                int closingBracket = rest.IndexOf(')');
+                rest = rest.Substring(0, closingBracket);
+                var args = rest.Split(',');
+                if(XString.Eq(functionName
+                , "SetSelectedRange"))
+                {
+                    int startIndex = int.Parse(args[0]);
+                    int endIndex = int.Parse(args[1]);
+                    Ide.Document_SetSelectedRange(startIndex, endIndex);
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedRange"))
+                {
+                    int startIndex = 0;
+                    int endIndex = 0;
+                    Ide.Document_GetSelectedRange(out startIndex, out endIndex);
+                    response += startIndex + "," + endIndex;
+                }
+                else if (XString.Eq(functionName
+                , "ReplaceSelectedText"))
+                {
+                    Ide.Document_ReplaceSelectedText();
+                }
+                else if (XString.Eq(functionName
+                , "DeleteSelectedText"))
+                {
+                    Ide.Document_DeleteSelectedText();
+                }
+                else if (XString.Eq(functionName
+                , "GetLineIndexByChar"
+                ))
+                {
+                    int charIndex = int.Parse(args[0]);
+                    int lineIndex = Ide.Document_GetLineIndexByChar(charIndex);
+                    response += lineIndex.ToString();
+                }
+                else if (XString.Eq(functionName
+                , "GetLine"
+                ))
+                {
+                    int lineIndex = int.Parse(args[0]);
+                    string lineContent = Ide.Document_GetLine(lineIndex);
+                    response += lineContent.ToString();
+                }
+                else if (XString.Eq(functionName
+                , "SelectLine"
+                ))
+                {
+                    int lineIndex = int.Parse(args[0]);
+                    Ide.Document_SelectLine(lineIndex);
+                }
+                else if (XString.Eq(functionName
+                , "GetLineLength"
+                ))
+                {
+                    int charIndex = int.Parse(args[0]);
+                    int charCount = Ide.Document_GetLineLength(charIndex);
+                    response += charCount.ToString();
+                }
+                else if (XString.Eq(functionName
+                , "GetCharIndexByLine"
+                ))
+                {
+                    int lineIndex = int.Parse(args[0]);
+                    int charIndex = Ide.Document_GetCharIndexByLine(lineIndex);
+                    response += charIndex.ToString();
+                }
+                else if (XString.Eq(functionName
+                , "GetTextLength"
+                ))
+                {
+                    int charCount = Ide.Document_GetTextLength();
+                    response += charCount.ToString();
+                }
+                else if (XString.Eq(functionName
+                , "GetText"
+                ))
+                {
+                    string chars = Ide.Document_GetText();
+                    response += chars;
+                }
+                else if (XString.Eq(functionName
+                , "ScrollToEnd"
+                ))
+                {
+                    Ide.Document_ScrollToEnd();
                 }
             }
         }

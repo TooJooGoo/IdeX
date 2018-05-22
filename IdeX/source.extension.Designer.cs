@@ -61,7 +61,7 @@ namespace IdeX {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TJG.
+        ///   Looks up a localized string similar to TooJooGoo.
         /// </summary>
         internal static string _106 {
             get {

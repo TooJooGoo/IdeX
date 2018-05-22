@@ -1,5 +1,5 @@
 // ----------------------------------------------------
-// COPYRIGHT (C) <TJG> ALL RIGHTS RESERVED. SEE THE LIC
+// COPYRIGHT (C) <TooJooGoo> ALL RIGHTS RESERVED. SEE THE LIC
 // ENSE FILE FOR THE FULL LICENSE GOVERNING THIS CODE. 
 // ----------------------------------------------------
 
@@ -9,7 +9,7 @@ static class Vsix
     public const string Name = "IdeX";
     public const string Description = "";
     public const string Language = "en-US";
-    public const string Version = "1.1";
-    public const string Author = "TJG";
+    public const string Version = "1.2";
+    public const string Author = "TooJooGoo";
     public const string Tags = "";
 }

@@ -1,13 +1,11 @@
 ### IdexPipe
 Language: C#
 
-FileVersion: v1.1
-
 
 ```csharp
 
 // ----------------------------------------------------
-// COPYRIGHT (C) <TJG> ALL RIGHTS RESERVED. SEE THE LIC
+// COPYRIGHT (C) <TooJooGoo> ALL RIGHTS RESERVED. SEE THE LIC
 // ENSE FILE FOR THE FULL LICENSE GOVERNING THIS CODE. 
 // ----------------------------------------------------
 

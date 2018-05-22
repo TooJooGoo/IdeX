@@ -1,5 +1,5 @@
 ﻿// ----------------------------------------------------
-// COPYRIGHT (C) <TJG> ALL RIGHTS RESERVED. SEE THE LIC
+// COPYRIGHT (C) <TooJooGoo> ALL RIGHTS RESERVED. SEE THE LIC
 // ENSE FILE FOR THE FULL LICENSE GOVERNING THIS CODE. 
 // ----------------------------------------------------
 
@@ -113,8 +113,8 @@ public static class Ide
             return result;
         }
         else if (XString.Eq(right
-            ,"a.text"
-            ,"ActiveDocument.Selection.Text"
+            , "a.text"
+            , "ActiveDocument.Selection.Text"
             ))
         {
             var selection = ActiveDocument_GetSelection();
@@ -176,6 +176,18 @@ public static class Ide
             var selection = ActiveDocument_GetSelection();
             return selection.BottomPoint.AbsoluteCharOffset.ToString();
         }
+
+        //else if (XString.Eq(right
+        //, "test"
+        //, "Line_GetLineIndexByCharIndex"
+        //))
+        //{
+        //    var tdoc2 = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+        //    var ep2 = tdoc2.CreateEditPoint();
+        //    ep2.MoveToAbsoluteOffset(1);
+        //    var line = ep2.Line;
+        //}
+
         else if (XString.Eq(right
             , "s.items"
             , "SolutionExplorer.Selection.Items"
@@ -347,7 +359,117 @@ public static class Ide
                 XLog.DeleteLogfile();
             }
         }
+
+        //else if (XString.Eq(left
+        //    , "test"
+        //    ))
+        //{
+        //    var doc = Dte.ActiveDocument as Document;
+        //    var selection = doc.Selection as TextSelection;
+        //    selection.MoveToAbsoluteOffset(1, false);
+        //    selection.MoveToAbsoluteOffset(5, true);
+        //}
+
+
+
         return "";
+    }
+
+    public static void Document_SetSelectedRange(int startIndex, int endIndex)
+    {
+        var doc = Dte.ActiveDocument as Document;
+        var selection = doc.Selection as TextSelection;
+        selection.MoveToAbsoluteOffset(startIndex, false);
+        selection.MoveToAbsoluteOffset(endIndex, true);
+    }
+    public static void Document_ReplaceSelectedText()
+    {
+        var doc = Dte.ActiveDocument as Document;
+        var selection = doc.Selection as TextSelection;
+        selection.Paste();
+    }
+    public static void Document_DeleteSelectedText()
+    {
+        var doc = Dte.ActiveDocument as Document;
+        var selection = doc.Selection as TextSelection;
+        selection.Delete();
+    }
+
+    public static int Document_GetLineIndexByChar(int charIndex)
+    {
+        var tdoc = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+        var point = tdoc.CreateEditPoint();
+        point.MoveToAbsoluteOffset(charIndex);
+        var line = point.Line;
+        //var lineContent = point.GetLines(line, line + 1);
+        return line;
+    }
+
+    public static string Document_GetLine(int lineIndex)
+    {
+        var tdoc = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+        var point = tdoc.CreateEditPoint();
+        point.MoveToLineAndOffset(lineIndex, 1);
+
+        var line = point.Line;
+        var lineContent = point.GetLines(line, line + 1);
+        return lineContent;
+    }
+
+    public static void Document_SelectLine(int lineIndex)
+    {
+        var tdoc = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+
+        var selection = tdoc.Selection as TextSelection;
+        selection.MoveToLineAndOffset(lineIndex, 1, false);
+        selection.EndOfLine(true);
+    }
+
+    public static int Document_GetLineLength(int charIndex)
+    {
+        var tdoc = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+        var point = tdoc.CreateEditPoint();
+        point.MoveToAbsoluteOffset(charIndex);
+        int lineLength = point.LineLength;
+        return lineLength;
+    }
+
+    public static int Document_GetCharIndexByLine(int lineIndex)
+    {
+        var tdoc = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+        var point = tdoc.CreateEditPoint();
+        point.MoveToLineAndOffset(lineIndex, 1);
+        int charIndex = point.AbsoluteCharOffset;
+        return charIndex;
+    }
+
+    public static int Document_GetTextLength()
+    {
+        var tdoc = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+        return tdoc.EndPoint.AbsoluteCharOffset - 1;
+    }
+
+    public static string Document_GetText()
+    {
+        var tdoc = Dte.ActiveDocument.Object("TextDocument") as TextDocument;
+        var point = tdoc.StartPoint.CreateEditPoint();
+        return point.GetText(tdoc.EndPoint);
+    }
+
+    public static void Document_ScrollToEnd()
+    {
+        var doc = Dte.ActiveDocument as Document;
+        var selection = doc.Selection as TextSelection;
+
+        selection.EndOfDocument(false);
+        selection.EndOfDocument(true);
+    }
+
+    public static void Document_GetSelectedRange(out int startIndex, out int endIndex)
+    {
+        var selection = ActiveDocument_GetSelection();
+        startIndex = selection.TopPoint.AbsoluteCharOffset;
+        endIndex = selection.BottomPoint.AbsoluteCharOffset;
     }
 
     public static string SolutionExplorer_GetItems()

@@ -119,7 +119,6 @@
       <Link>Resources\LICENSE</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <None Include="app.config" />
     <None Include="Resources\i_blue_original_64.png" />
     <None Include="Resources\i_blue_smooth_64.png" />
     <Content Include="Resources\idex.ico">
