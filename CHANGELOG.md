@@ -1,10 +1,13 @@
 ### Road map
 These features are planned for the next version.
 
-- [ ] Provide a "Getting Started" point.
+- [ ] Improve support for the windows app "Inclusion".
 
 ### Change log
 These features have been released with each version on the Visual Studio extension gallery.
+
+#### IdeX 1.2
+- [x] Implement support for the windows app "Inclusion".
 
 #### IdeX 1.1
 - [x] Editor.OpenDocumentCount : Gets the count of documents currently opened in the editor window.
