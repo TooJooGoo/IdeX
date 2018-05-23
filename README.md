@@ -1,23 +1,22 @@
 # IdeX
 
-IdeX allows your application to easily get data from Visual Studio. For example get the current selected text or the current selected items from the solution explorer programmatically.
+**IdeX allows your application to communicate with Visual Studio across process boundaries.**
 
-- Your application can be written in almost any language.
-- IdeX is compact, robust and extremely fast. See chapter "Technical background".
-- IdeX is easy to use. The "Getting Started" chapter explains how to integrate IdeX into your own application.
-- The IdeX user interface integrates seamlessly into Visual Studio.
-- The performance of Visual Studio itself is not impacted.
+IdeX is the acronym for Integrated Development Environment Extension. It uses IPC (Inter Process Communication) to shift data between Visual Studio and an external process for example your application. The IdeX server integrates into Visual Studio and the IdeX client integrates into the external process. The external process sends a request to the server. Based on the request, the server collects data and sends a response back to the client. Both request and response strings adhere to the IdeX protocol syntax.
 
-## Technical background
-IdeX is an acronym for Integrated Development Environment Extension. It uses IPC (Inter Process Communication) to shift data between Visual Studio and an external process for example your application. 
-The IdeX server integrates into Visual Studio and the IdeX client integrates into the external process. The external process sends a request to the server. Based on the request, the server collects data and sends a response back to the client. The request is a simple string which adheres to the IdeX Syntax.
+IdeX ...
+* is robust and very fast
+* is easy to use
+* seamlessly integrates into the Visual Studio UI
+* has no performance impact on Visual Studio
+
+Your application can use IdeX for example to access the current text selection or the current selected items inside the Visual Studio. Learn more about the capabilities of the IdeX protocol syntax on our [Website](https://github.com/TooJooGoo/IdeX).
 
 ## Download
 [![Build status](https://ci.appveyor.com/api/projects/status/4m76qv4u4t6pc1yg?svg=true)](https://ci.appveyor.com/project/TooJooGoo/idex)
 
-Get the latest IdeX version here:
- - Vsix gallery: [Download](http://vsixgallery.com/extension/8F047980-8107-4E48-B836-571A2AAAFA3C)
- - Visual Studio gallery: [Download](https://visualstudiogallery.msdn.microsoft.com/a53074bd-cf8d-4be7-8eb6-2b768a45b96b)
+The latest version is available at the Visual Studio gallery.
+- [Download IdeX](https://visualstudiogallery.msdn.microsoft.com/a53074bd-cf8d-4be7-8eb6-2b768a45b96b)
 
 ## Getting Started
 This chapter explains how easy it is to setup IdeX and how you can plug it into your application.
