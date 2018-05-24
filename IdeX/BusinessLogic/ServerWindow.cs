@@ -147,7 +147,7 @@ public partial class ServerWindow : Form
                 int closingBracket = rest.IndexOf(')');
                 rest = rest.Substring(0, closingBracket);
                 var args = rest.Split(',');
-                if(XString.Eq(functionName
+                if (XString.Eq(functionName
                 , "SetSelectedRange"))
                 {
                     int startIndex = int.Parse(args[0]);
@@ -161,6 +161,12 @@ public partial class ServerWindow : Form
                     int endIndex = 0;
                     Ide.Document_GetSelectedRange(out startIndex, out endIndex);
                     response += startIndex + "," + endIndex;
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedText"))
+                {
+                    string text = Ide.Document_GetSelectedText();
+                    response += text;
                 }
                 else if (XString.Eq(functionName
                 , "ReplaceSelectedText"))
@@ -231,6 +237,146 @@ public partial class ServerWindow : Form
                 {
                     Ide.Document_ScrollToEnd();
                 }
+                else if (XString.Eq(functionName
+                , "GetCaretLineIndex"
+                ))
+                {
+                    response += Ide.Document_GetCaretLineIndex();
+                }
+                else if (XString.Eq(functionName
+                , "GetCaretColumnIndex"
+                ))
+                {
+                    response += Ide.Document_GetCaretColumnIndex();
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedStartLineIndex"
+                ))
+                {
+                    response += Ide.Document_GetSelectedStartLineIndex();
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedEndLineIndex"
+                ))
+                {
+                    response += Ide.Document_GetSelectedEndLineIndex();
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedRangeCount"
+                ))
+                {
+                    response += Ide.Document_GetSelectedRangeCount();
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedStartCharIndex"
+                ))
+                {
+                    response += Ide.Document_GetSelectedStartCharIndex();
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedEndCharIndex"
+                ))
+                {
+                    response += Ide.Document_GetSelectedEndCharIndex();
+                }
+                else if (XString.Eq(functionName
+                , "GetOpenDocuments"
+                ))
+                {
+                    response += Ide.Document_GetOpenDocuments();
+                }
+            }
+            else if (XString.StartsWith(actionLine, "SolutionExplorer."))
+            {
+                string functionName = null;
+                string[] args = null;
+                ParseActionLine(actionLine, "SolutionExplorer.",
+                    out functionName, out args);
+
+                if (XString.Eq(functionName
+                , "GetSelectedItems"
+                ))
+                {
+                    response += Ide.SolutionExplorer_GetSelectedItems();
+                }
+                else if (XString.Eq(functionName
+                , "GetSelectedItemCount"
+                ))
+                {
+                    response += Ide.SolutionExplorer_GetSelectedItemCount();
+                }
+            }
+            else if (XString.StartsWith(actionLine, "Base."))
+            {
+                string functionName = null;
+                string[] args = null;
+                ParseActionLine(actionLine, "Base.",
+                    out functionName, out args);
+
+                if (XString.Eq(functionName
+                , "GetServerId"
+                ))
+                {
+                    response += Ide.Base_GetServerId();
+                }
+                else if (XString.Eq(functionName
+                , "SetServerId"
+                ))
+                {
+                    string serverId = args[0];
+                    Ide.Base_SetServerId(serverId);
+                }
+                else if (XString.Eq(functionName
+                , "GetServerHandle"
+                ))
+                {
+                    response += Ide.Base_GetServerHandle();
+                }
+            }
+            else if (XString.StartsWith(actionLine, "Output."))
+            {
+                string functionName = null;
+                string[] args = null;
+                ParseActionLine(actionLine, "Output.",
+                    out functionName, out args);
+
+                if (XString.Eq(functionName
+                , "WriteCR"
+                ))
+                {
+                    response += Ide.Output_WriteCR();
+                }
+                else if (XString.Eq(functionName
+                , "WriteLF"
+                ))
+                {
+                    response += Ide.Output_WriteLF();
+                }
+                else if (XString.Eq(functionName
+                , "WriteCRLF"
+                ))
+                {
+                    response += Ide.Output_WriteCRLF();
+                }
+                else if (XString.Eq(functionName
+                , "WriteHT"
+                ))
+                {
+                    response += Ide.Output_WriteHT();
+                }
+                else if (XString.Eq(functionName
+                , "WriteSP"
+                ))
+                {
+                    response += Ide.Output_WriteSP();
+                }
+                else if (XString.Eq(functionName
+                , "Write"
+                ))
+                {
+                    string text = args[0].Trim('"');
+                    response += Ide.Output_Write(text);
+                }
             }
         }
 
@@ -278,6 +424,17 @@ public partial class ServerWindow : Form
             }
         }
         XLog.Log($"End Request");
+    }
+
+    void ParseActionLine(string line, string prefix, out string functionName, out string[] args)
+    {
+        string rest = line.Substring(prefix.Length);
+        int openBracket = rest.IndexOf('(');
+        functionName = rest.Substring(0, openBracket);
+        rest = rest.Substring(openBracket + 1);
+        int closingBracket = rest.IndexOf(')');
+        rest = rest.Substring(0, closingBracket);
+        args = rest.Split(',');
     }
     public string GetWindowClassName()
     {

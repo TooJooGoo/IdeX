@@ -13,50 +13,49 @@ IdeX ...
 Your application can use IdeX for example to access the current text selection or the current selected items inside the Visual Studio. Learn more about the capabilities of the IdeX protocol syntax on our [Website](https://github.com/TooJooGoo/IdeX).
 
 ## Download
+
+The [latest stable version](https://visualstudiogallery.msdn.microsoft.com/a53074bd-cf8d-4be7-8eb6-2b768a45b96b) is available at the Visual Studio gallery.
+
+The [most recent version](http://vsixgallery.com/extension/8F047980-8107-4E48-B836-571A2AAAFA3C)  can be found at the VSIX gallery. Please check the build status before you download the most recent version. 
+
 [![Build status](https://ci.appveyor.com/api/projects/status/4m76qv4u4t6pc1yg?svg=true)](https://ci.appveyor.com/project/TooJooGoo/idex)
 
-The latest version is available at the Visual Studio gallery.
-- [Download IdeX](https://visualstudiogallery.msdn.microsoft.com/a53074bd-cf8d-4be7-8eb6-2b768a45b96b)
 
 ## Getting Started
-This chapter explains how easy it is to setup IdeX and how you can plug it into your application.
+This chapter explains how to setup IdeX for your own business. First of all you have to download IdeX and install to Visual Studio. Use the download links above or click "Tools/Extensions and Updates.." in Visual Studio and browse online for "IdeX".
 
 ### Start the server
-In Visual Studio click menu item "Tools/IdeX/Enable".
-The IdeX server is now enabled.
+In Visual Studio click menu item "Tools/IdeX/Enable". The IdeX server is now enabled, ready for processing client requests.
 
 ### Start the client
-In Visual Studio click the menu item "Tools/IdeX/Lab"
-The IdeX laboratory is started.
+In Visual Studio click the menu item "Tools/IdeX/Lab". The IdeX laboratory is started in a separate window.
 
 ![Idex laboratory](Art/IdexLab.png "The IdeX laboratory")
 
-The IdeX Lab is a standalone process simulating an IdeX client. The IdeX Lab is an environment for testing new requests against the IdeX server.
-When you are done with a request, you can copy it to your application.
+The IdeX Lab is used to simulate and test requests against IdeX server.
+
+The request strings can be used inside your application to communicate with Visual Studio.
 
 ### Sample Usage
-The following sample shows how to write a request which gets all items currently selected in the solution explorer.
+The following sample shows how you can get all items currently selected in the solution explorer.
 
-Open an arbitrary Visual Studio project and select some items in the solution explorer.
-The example below shows the solution explorer with three selected items.
+Open any Visual Studio project and select some items in the solution explorer as shown below.
 
 ![Alt](Art/SolutionExplorerSelection.png "Solution explorer with some selected items")
 
-Go to the IdeX Lab and enter the following code into the request window at the top:
+Go to the IdeX Lab and enter the following code into the request window:
 
-	g SolutionExplorer.Selection.ItemCount
+	SolutionExplorer.GetSelectedItemCount()
 
-The prefix "g" indicates a "get" operation. The string "SolutionExplorer.Selection.ItemCount" is the object to operate on. Press button "Send Request" or type "ALT+Enter" to send the request.
-The response window at the bottom should yield the following text:
+Press button "Send Request" or type "ALT+Enter" to send the request. The response window should yield the following string:
 
 	3
-We just asked Visual Studio how many items are selected in the solution explorer.
 
-Now enter the following request and send it:
+We just asked Visual Studio how many items are selected in the solution explorer. Now enter the following request and send it:
 
-	g SolutionExplorer.Selection.Items
+	SolutionExplorer.GetSelectedItems()
 
-The response window should yield a text similar to this:
+The response window should yield a string similar to this:
 
 	ObjectCount = 3
 	ObjectProperties = Type,Kind,Name,Path
@@ -78,15 +77,15 @@ The response window should yield a text similar to this:
 
 We just asked Visual Studio what kind of items are selected in the solution explorer.
 
-To use IdeX within your project, just include 
-the [IdexPipe](IdexPipe.md) class.
+There are many other IPC functions available, for example you can query the currently selected text from the active document. Learn more about the [IdeX protocol syntax](IdexSyntax.txt).
 
-Use the IdexPipe class to send a request programmatically:
+To use IdeX within your project, just include the [IdexPipe](IdexPipe.md) class. Then use the IdexPipe class to send a request programmatically:
+
 ```csharp
 // Tell which encoding you want to use.
 IdexPipe.Encoding = IdexPipe.Unicode;
 // Build the request string.
-string request = "g SolutionExplorer.Selection.Items";
+string request = "SolutionExplorer.GetSelectedItems()";
 // Send the request.
 // The Send method is executed synchronously.
 // The response string holds the selected items 
@@ -94,22 +93,50 @@ string request = "g SolutionExplorer.Selection.Items";
 string response = IdexPipe.Send(request);
 ```
 
-Learn more about IdeX here: [IdeX syntax](IdexSyntax.txt)
+### Stop the server
+In Visual Studio click menu item "Tools/IdeX/Disable". The IdeX server is now disabled, further client requests won't be processed.
 
 ## Features
-The most popular features are:
-- Get selected items
-  - Gets the items currently selected in the solution explorer.
-- Get selected text
-  - Gets the current selected text of the active document.
-- Get open documents
-  - Gets the documents currently opened in the editor window.
+See the list of most popular features.
 
-## Change log
-See the change log here: [Change log](CHANGELOG.md)
+- **Document.GetSelectedText()** 
+Gets the current selected text of the active document.
+	
+- **Document.GetCaretLineIndex()** 
+Gets the line index of the caret.
+	
+- **Document.GetCaretColumnIndex()** 
+Gets the column index of the caret.
+	
+- **Document.GetSelectedStartLineIndex()** 
+Gets the line index where the current text selection starts.
+	
+- **Document.GetSelectedEndLineIndex()** 
+Gets the line index where the current text selection ends.
+	
+- **Document.GetSelectedRangeCount()** 
+Gets the count of selected text ranges.
+	
+- **Document.GetSelectedStartCharIndex()** 
+Gets the char index where the current text selection starts.
+	
+- **Document.GetSelectedEndCharIndex()** 
+Gets the char index where the current text selection ends.
+	
+- **Document.GetOpenDocuments()** 
+Gets the documents currently opened in the editor window.
 
-## Contribute
-See the contribution guidelines here: [Contribution guidelines](CONTRIBUTING.md)
+- **SolutionExplorer.GetSelectedItems()** 
+Gets the items currently selected in the solution explorer.
+	
+- **SolutionExplorer.GetSelectedItemCount()** 
+Gets the count of items currently selected in the solution explorer.
+
+## Changelog
+See the [change log](CHANGELOG.md).
+
+## Contribution
+See the [contribution guidelines](CONTRIBUTING.md).
 
 ## License
-See the license file here: [License](LICENSE)
+See the [license](LICENSE).

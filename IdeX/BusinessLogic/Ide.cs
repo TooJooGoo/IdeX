@@ -472,6 +472,108 @@ public static class Ide
         endIndex = selection.BottomPoint.AbsoluteCharOffset;
     }
 
+    public static string Document_GetSelectedText()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.Text;
+    }
+
+    public static string Document_GetCaretLineIndex()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.CurrentLine.ToString();
+    }
+
+    public static string Document_GetCaretColumnIndex()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.CurrentColumn.ToString();
+    }
+
+    public static string Document_GetSelectedStartLineIndex()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.TopLine.ToString();
+    }
+
+    public static string Document_GetSelectedEndLineIndex()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.BottomLine.ToString();
+    }
+
+    public static string Document_GetSelectedRangeCount()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.TextRanges.Count.ToString();
+    }
+
+    public static string Document_GetSelectedStartCharIndex()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.TopPoint.AbsoluteCharOffset.ToString();
+    }
+
+    public static string Document_GetSelectedEndCharIndex()
+    {
+        var selection = ActiveDocument_GetSelection();
+        return selection.BottomPoint.AbsoluteCharOffset.ToString();
+    }
+
+    public static string SolutionExplorer_GetSelectedItems()
+    {
+        var result = Ide.SolutionExplorer_GetItems();
+        return result;
+    }
+    public static string SolutionExplorer_GetSelectedItemCount()
+    {
+        var result = Ide.SolutionExplorer_GetItemCount();
+        return result;
+    }
+    public static string Document_GetOpenDocuments()
+    {
+        var result = OpenDocuments_Get();
+        return result;
+    }
+    public static string Base_GetServerId()
+    {
+        return ServerWindow.Text;
+    }
+    public static void Base_SetServerId(string serverId)
+    {
+        ServerWindow.Text = serverId;
+    }
+    public static string Base_GetServerHandle()
+    {
+        var result = ServerWindow.Handle.ToString();
+        return result;
+    }
+
+    public static string Output_WriteCR()
+    {
+        return "\r";
+    }
+    public static string Output_WriteLF()
+    {
+        return "\n";
+    }
+    public static string Output_WriteCRLF()
+    {
+        return "\r\n";
+    }
+    public static string Output_WriteHT()
+    {
+        return "\t";
+    }
+    public static string Output_WriteSP()
+    {
+        return " ";
+    }
+    public static string Output_Write(string text)
+    {
+        return text;
+    }
+
     public static string SolutionExplorer_GetItems()
     {
         int index = 0;
